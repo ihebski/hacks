@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron my-4">
+  <div class="text-center">
+    <h1>{{ '%s - %s' % (error.code, error.name) }}</h1>
+    <p>{{ error.description }}.</p>
+  </div>
+</div>
+{% endblock %}

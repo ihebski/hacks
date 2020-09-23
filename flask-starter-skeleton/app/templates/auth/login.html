@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="card w-50 mx-auto">
+    <div class="card-header">
+      <h4 class="card-title">Login</h4>
+    </div>
+    <div class="card-body">
+      <form class="form" role="form" action="{{ url_for('auth.login') }}" method="post">
+        <div class="form-group">
+          {{form.user_id.label}}
+          {{form.user_id(class='form-control')}}
+        </div>
+        <div class="form-group">
+          {{form.password.label}}
+          {{form.password(class='form-control')}}
+        </div>
+        {{form.submit(class='btn btn-primary')}}
+        <p>Don't have an account? <a href="{{ url_for('auth.register') }}">Register</a>.</p>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
