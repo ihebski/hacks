@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
-
+# @ih3bski
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import uuid
-import sqlite3
-import fileinput
 from loguru import logger
 import sys
 
@@ -19,8 +17,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{dbpath}/{dbname}.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 stats = logger.level("STATS", no=38, color="<yellow>", icon="📈")
+Counter = 0
 
-# Model -> could be changed later on
+# Model -> T.B changed
 class Target(db.Model):
     __tablename__ = 'Target'
     id = db.Column(db.Text, primary_key=True)
@@ -33,10 +32,11 @@ db.create_all()
 
 
 def save(subdomain):
+	global Counter
 	if db.session.query(Target.id).filter_by(subdomain=subdomain).scalar() is None :
-		subs = Target(str(uuid.uuid4()),subdomain)
-		db.session.add(subs)
+		db.session.add(Target(str(uuid.uuid4()),subdomain))
 		db.session.commit()
+		Counter += 1
 		logger.log('INFO',f'[+] {subdomain} added to database')
 	else:
 		logger.log('ERROR',f'[-] {subdomain} already exists')
@@ -46,7 +46,7 @@ def search(subdomain):
 	if sub :
 		for row in sub:
 			logger.log('INFO',row.subdomain)
-		logger.log("STATS", f'We have found {len(sub)} subdomain ! Happy Hacking $_$')
+		logger.log("STATS", f'We have found {len(sub)} subdomains ! Happy Hacking $_$')
 	else:
 		logger.log('WARNING',f'[-] {subdomain} NOT FOUND.')
 
@@ -56,6 +56,7 @@ def main():
 	if not sys.stdin.isatty():
 	    for subdomains in sys.stdin:
 	    	save(subdomains.strip())
+	    logger.log("STATS", f'{Counter} Bulk added ^_^ !')
 	# read subdomain as argument                                            
 	else:
 		if len(sys.argv) > 1:
@@ -65,5 +66,3 @@ def main():
 
 if __name__ == '__main__':
 	main()
-
-	
