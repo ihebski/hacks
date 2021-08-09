@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container" style="background:white">
+  <h1 class="my-4">Flask TinyDB - Simple CRUD</h1>
+  {% if notes|length < 0 %}
+  <p>Any idea for tomorrow?</p>
+  {% else %}
+  {% include 'snippets/form.html' %}
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Name</th>
+        <th>Created At</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for note in notes %}
+      <tr>
+        <td><a href="/update/{{ note.id }}">{{ note.notes }}</a></td>
+        <td>{{ note.created_at}}</td>
+        <td class="text-right"><a class="btn btn-danger btn-sm" href="/delete/{{ note.id }}" role="button">Remove</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+
+</div>
+{% endblock content %}
