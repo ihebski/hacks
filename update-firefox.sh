@@ -23,7 +23,7 @@ FFCHANNEL=${FFCHANNEL:-latest}
 FFPACKAGE="https://download.mozilla.org/?product=firefox-${FFCHANNEL}&os=linux${LIBDIRSUFFIX}&lang=${FFLANG}"
 
 INSTALLED_VERSION=$(${WORKING_DIR}/firefox/firefox -v |awk '{print $3}' )
-NEW_VERSION=$(cat firefox_versions.json | jq -r '.LATEST_FIREFOX_VERSION')
+NEW_VERSION=$(curl --silent https://product-details.mozilla.org/1.0/firefox_versions.json | jq -r '.LATEST_FIREFOX_VERSION')
 
 if [ "$INSTALLED_VERSION" = "$NEW_VERSION" ]; then
    printf "We are running the latest version of Firefox \U1F918"
