@@ -29,9 +29,9 @@ if [ "$INSTALLED_VERSION" = "$NEW_VERSION" ]; then
    printf "We are running the latest version of Firefox \U1F918"
 else
 	printf "Installing the new version of Firefox  -> [ $NEW_VERSION ] \U1F50E"
-	wget -q -O "$TMP/firefox-$NEW_VERSION.tar.bz2" $FFPACKAGE
+	wget --show-progress -q -O "$TMP/firefox-$NEW_VERSION.tar.bz2" $FFPACKAGE
 	tar xvf $TMP/firefox-$NEW_VERSION.tar.*
 	sudo rm -rf ${WORKING_DIR}/firefox
-	sudo mv $TMP/firefox ${WORKING_DIR}
+	sudo cp -R $TMP/firefox ${WORKING_DIR}
 	printf "\nDone\nTest installed version \U1F47E -> $(${WORKING_DIR}/firefox/firefox -v)"
 fi
