@@ -2,9 +2,14 @@
 # Update projectdiscovery tools by @ihebski
 
 #projectdiscovery tools https://github.com/projectdiscovery
-projectDiscovery=("httpx"  "nuclei"  "naabu"  "subfinder")
+projectDiscovery=("httpx"  "nuclei"  "naabu"  "subfinder" "notify")
 
 for tool in ${projectDiscovery[*]}; do
+    # Check if tool is installed
+    if ! command -v ${tool} &> /dev/null
+    then
+        printf "${tool} is not installed in your system ! \U1F984 \n"
+    else
     # Get latest tools release
     url=$(curl -s https://api.github.com/repos/projectdiscovery/${tool}/releases/latest | grep "browser_download_url" | cut -d '"' -f 4 | grep "linux_amd64")
     # Extract versions
@@ -17,5 +22,6 @@ for tool in ${projectDiscovery[*]}; do
         printf "\n[+] Installing the new version of ${tool} -> [ $new_version ] \U1F50E\n"
         # Download and install the new version of tools
         wget --show-progress -q $url -P /tmp && unzip /tmp/${tool}* -d /tmp && sudo mv /tmp/${tool} /usr/bin/ && rm /tmp/${tool}* /tmp/v
+    fi
     fi
 done
