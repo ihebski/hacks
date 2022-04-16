@@ -7,3 +7,4 @@ mackerel monitoring - service network solution
 prometheus alertmanager/Grafana
 Proxmox - simular to ESXI but for free
 Terraform - Infra as a code
+homer - Simple dashboard using yaml config file
