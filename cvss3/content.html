@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" media="all" href="http://127.0.0.1:8000/cvss.css">
+    <script src="http://127.0.0.1:8000/cvss.js"></script>
+</head>
+
+<!-- Trigger the modal with a button -->
+<style type="text/css">
+    @media (min-width: 1200px) {
+   .modal-xlg {
+      width: 90%; 
+   }
+}
+</style>
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog " style="max-width: 48%;" >
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">CVSS 3.1 Calculator</h4>
+      </div>
+      <div class="modal-body">
+ <div id="cvssboard"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="container">
+    <h3>My Cvss score</h3>
+    <input type="input" id="showcvss">
+    <div class="row">
+
+    </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/add" method="post">
+                        <div class="form-group">
+                            <input id ="title" class="form-control" type="text" name="title" placeholder="Title" 
+                            >
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="description" cols="100"
+                                      placeholder="Add a Description" ></textarea>
+                        </div>
+                        <button class="btn btn-primary" type="submit">
+                            Add
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+<input type="text" id="severity" placeholder="severity">
+
+        <div class="col-md-6">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>source</th>
+                    <th>Operations</th>
+                </tr>
+                </thead>
+                <style type="text/css">
+                    
+                    .under-limit { background-color: red; }
+
+                </style>
+                <tbody>
+
+
+   
+
+
+            {% for entry in entries %}
+         
+            {% if (entry.source == "1") or (entry.title == "0") or (entry.description == "0")  %}
+               <tr class="under-limit">
+            {% else %}
+                <tr>
+            {% endif %}
+
+                    <td>{{ entry.id }}</td>
+                    <td><strong>{{ entry.title }}</strong></td>
+                    <td>{{ entry.description }}</td>
+                    <td>{{ entry.source}}</td>
+
+
+                    <td>
+                        <a class="{{ 'btn btn-success' if entry.status else 'btn btn-dark'}}"
+                           href="/show/{{ entry.id }}">
+                            Turn Status
+                        </a>
+                        <a class="btn btn-danger"
+                           href="/delete/{{ entry.id }}">
+                            Delete
+                        </a>
+                        <a class="btn btn-info"
+                           href="/update/{{ entry.id }}">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+</div>
+    <script>
+        var c = new CVSS("cvssboard", {
+            onchange: function() {
+                var score = c.get().score;
+                window.location.hash = c.get().vector;
+                //c.vector.setAttribute('href', '#' + c.get().vector)
+                document.getElementById("title").value = score;
+               
+                if (score >= 0.1 && score <= 3.9){
+                    document.getElementById("severity").value = "Low";
+                }
+                else if (score >= 4.0 && score <= 6.9)
+                {
+                document.getElementById("severity").value = "Medium";
+                }
+                else if (score >= 7.0 && score <= 8.9)
+                {
+                document.getElementById("severity").value = "High";
+                }
+                else if (score >= 9.0 && score <= 10)
+                {
+                document.getElementById("severity").value = "Critical";
+                }
+                else{
+                  document.getElementById("severity").value = "0";  
+                }
+            
+            }
+        });
+
+        if (window.location.hash.substring(1).length > 0) {
+            c.set(decodeURIComponent(window.location.hash.substring(1)));
+        }
+    </script>
+{% endblock %}
+
+
+
+
+

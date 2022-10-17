@@ -1,0 +1,30 @@
+Client Code:
+using System;
+using System.IO;
+using System.Net;
+using System.Text;
+using System.Net.Sockets;
+
+
+public class clnt
+{
+    class program { 
+    public static void Main()
+    {
+
+
+        System.Net.Sockets.TcpClient client = new System.Net.Sockets.TcpClient("127.0.0.1", 1234);
+       // TcpClient client = new TcpClient("0.0.0.0", 1200);
+        Console.WriteLine("Trying to connect to the server......");
+        NetworkStream n = client.GetStream();
+        Console.WriteLine("Connected");
+        string ch = Console.ReadLine();
+        byte[] message = Encoding.Unicode.GetBytes(ch);
+        n.Write(message, 0, message.Length);
+        Console.WriteLine( "---------------sent------------------" );
+        client.Close();
+        Console.ReadKey();
+
+        
+    }
+    }﻿

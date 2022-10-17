@@ -1,0 +1,7 @@
+Flask==0.12.2
+Flask-Login==0.4.0
+Flask-Bcrypt==0.7.1
+Flask-SQLAlchemy==2.2
+Flask-Login==0.4.0
+psycopg2==2.7.1
+Werkzeug==0.12.2

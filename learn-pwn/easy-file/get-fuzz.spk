@@ -1,0 +1,7 @@
+s_string("GET");
+s_string(" ");
+s_string_variable("fuzzPawn");
+s_string(" ");
+s_string("HTTP/1.0");
+s_string("\r\n\r\n");
+sleep(3)

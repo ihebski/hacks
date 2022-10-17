@@ -1,0 +1,4 @@
+$ file flag
+flag: gzip compressed data, was "flag", last modified: Sun Jun 26 17:22:38 2016, from Unix
+$ cat flag | gunzip
+ABCTF{broken_zipper}

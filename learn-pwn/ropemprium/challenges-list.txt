@@ -1,0 +1,23 @@
+⓪ret2win
+ret2win means 'return here to win' and it's recommended you start with this challenge. Visit the challenge page by clicking the link above to learn more.
+
+①split
+Combine elements from the ret2win challenge that have been split apart to beat this challenge. Learn how to use another tool whilst crafting a short ROP chain.
+
+②callme
+Chain calls to multiple imported methods with specific arguments and see how the differences between 64 & 32 bit calling conventions affect your ROP chain.
+
+③write4
+Find and manipulate gadgets to construct an arbitrary write primitive and use it to learn where and how to get your data into process memory.
+
+④badchars
+Learn to deal with badchars, characters that will not make it into process memory intact or cause other issues such as premature chain termination.
+
+⑤fluff
+Sort the useful gadgets from the fluff to construct another write primitive in this challenge. You'll have to get creative though, the gadgets aren't straight forward.
+
+⑥pivot
+Stack space is at a premium in this challenge and you'll have to pivot the stack onto a second ROP chain elsewhere in memory to ensure your success.
+
+⑦ret2csu
+Learn a ROP technique that lets you populate useful 64 bit calling convention registers like rdi, rsi and rdx even in an environment where gadgets are sparse.

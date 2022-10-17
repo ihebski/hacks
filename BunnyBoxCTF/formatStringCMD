@@ -1,0 +1,1 @@
+$ ./fermat "$(printf %1296s | tr " " "a")%x%x%x%x%x%x%n"

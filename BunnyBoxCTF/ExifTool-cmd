@@ -1,0 +1,2 @@
+$ exiftool -b -ThumbnailImage d9040024afd9d38b73c72e30f722cf09e1093e3c_hekkerman.jpg > thumb.jpg
+$ exiftool -b -ThumbnailImage thumb.jpg > thumb.1.jpg

@@ -1,0 +1,176 @@
+{% extends 'site_template.html' %}
+
+{% block body %}
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Users Managment
+                            <small>company managment system</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="/">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-file"></i>Users
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+ <!-- Main jumbotron for a primary marketing message or call to action -->
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Search</h2>
+                      <form action="/search" method="POST" role="form" >
+
+                     <div class="form-group input-group">
+                                <input type="text" name="search" class="form-control">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit">
+                                        <i class="fa fa-search"></i></button></span>
+                            </form>
+                            </div>
+                 
+                        
+                            {% if data %}         
+                            <div class="alert alert-danger" role="alert">
+                            <p>The current user <strong>{{data}} </strong> is not found in the Database</p>
+                            </div>
+                            {% endif %}
+
+                    <div class="table-responsive" >
+                        <table class="table table-bordered table-hover ">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Username</th>
+                                    <th>Mobile</th>
+                                    <th>Email</th>
+                                    <th>Joined</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td>500</td>
+                                    <td>Admin</td>
+                                    <td>-</td>
+                                    <td>Administrator@admin.com</td>
+                                    <td>1/20/2012</td>
+                                </tr>
+<tr>
+<td>0498710599</td>
+<td>wdavidov0</td>
+<td>911-916-3316</td>
+<td>zbrigge0@telegraph.co.uk</td>
+<td>1/18/2015</td>
+</tr>
+
+<tr>
+<td>3479032621</td>
+<td>acorr1</td>
+<td>359-395-3430</td>
+<td>iprujean1@livejournal.com</td>
+<td>7/16/2014</td>
+
+</tr>
+
+<tr>
+<td>4794010982</td>
+<td>jashelford2</td>
+<td>538-120-1217</td>
+<td>hllopis2@sun.com</td>
+<td>6/6/2015</td>
+</tr>
+
+</tr>
+<td>5770585218</td>
+<td>mhackett3</td>
+<td>152-123-1283</td>
+<td>cwarlock3@mozilla.org</td>
+<td>1/14/2019</td>
+</tr>
+
+<tr>
+<td>6974905386</td>
+<td>oswanwick4</td>
+<td>859-250-7655</td>
+<td>rcowperthwaite4@multiply.com</td>
+<td>11/13/2017</td>
+</tr>
+
+<tr>
+<td>8957965742</td>
+<td>tlafontaine5</td>
+<td>611-352-1006</td>
+<td>vbaggally5@creativecommons.org</td>
+<td>5/17/2015</td>
+</tr>
+
+
+<tr>
+<td>639469495</td>
+<td>wadamowicz6</td>
+<td>998-850-7734</td>
+<td>jriding6@opensource.org</td>
+<td>10/30/2018</td>
+</tr>
+
+<tr>
+<td>6216498355</td>
+<td>kflescher7</td>
+<td>983-727-6733</td>
+<td>nsarfass7@tumblr.com</td>
+<td>5/28/2016</td>
+</tr>
+
+<tr>
+<td>2099322031</td>
+<td>mlandis8</td>
+<td>298-154-4697</td>
+<td>glawie8@soup.io</td>
+<td>2/4/2015</td>
+</tr>
+
+<tr>
+<td>8801148127</td>
+<td>vtoffanelli9</td>
+<td>885-940-6291</td>
+<td>aklement9@ox.ac.uk</td>
+<td>9/19/2014</td>
+</tr>
+
+                            </tbody>
+
+                        </table>
+<nav aria-label="pagination pull-right">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+                    </div>
+                </div>
+              
+            </div>
+
+
+
+                    </p>
+                </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+{% endblock %}

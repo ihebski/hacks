@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+c = 29846947519214575162497413725060412546119233216851184246267357770082463030225
+p = 238324208831434331628131715304428889871
+q = 296805874594538235115008173244022912163
+n = p * q
+e = 3
+
+import gmpy2
+from Crypto.PublicKey import RSA
+d = lambda p, q, e: int(gmpy2.invert(e, (p-1)*(q-1)))
+
+key = RSA.construct((n, e, d(p,q,e)))
+import binascii
+print(binascii.unhexlify(hex(key.decrypt(c))[2:]).decode())

@@ -1,0 +1,5 @@
+s_string("SRUN")
+s_string(" ")
+s_string_variable("netascii")
+s_string("\r\n")
+sleep(1)

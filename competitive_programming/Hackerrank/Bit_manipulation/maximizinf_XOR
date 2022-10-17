@@ -1,0 +1,14 @@
+#!/bin/python
+
+# Complete the function below.
+
+
+l = int(raw_input())
+r = int(raw_input())
+
+k =[]
+for a in xrange(l,r+1):
+	for b in xrange(l,r+1):
+		k.append(a^b)
+
+print max(k)			

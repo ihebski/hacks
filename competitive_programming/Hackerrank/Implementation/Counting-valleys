@@ -1,0 +1,14 @@
+
+n = int(input())
+s = raw_input().strip()
+val = 0
+v = 0
+for x in s:
+	if x == 'U':
+		val +=1
+	if x == 'D':
+		val -=1	
+	if val == 0 and x == "U" :
+		v +=1	
+
+print v

@@ -1,0 +1,30 @@
+Server code:
+using System;
+using System.Text;
+using System.Net;
+using System.Net.Sockets;
+
+public class serv
+{
+    class program { 
+    public static void Main()
+    {
+
+
+        IPEndPoint ep = new IPEndPoint(IPAddress.Loopback, 1234); // Address  
+        TcpListener listen = new TcpListener(ep); // Instantiate the object  
+        Console.WriteLine("[listening], IP= {0}", IPAddress.Any);
+        listen.Start();
+        TcpClient client = listen.AcceptTcpClient();
+        Console.WriteLine("Client Connected");
+        NetworkStream stream = client.GetStream();
+        byte[] buffer = new byte[client.ReceiveBufferSize];
+        int data = stream.Read(buffer, 0, client.ReceiveBufferSize);
+        string ch = Encoding.Unicode.GetString(buffer, 0, data);
+        Console.WriteLine("Recieved Message " + ch);
+        client.Close();
+        Console.ReadKey();
+        
+    }
+    }
+}﻿

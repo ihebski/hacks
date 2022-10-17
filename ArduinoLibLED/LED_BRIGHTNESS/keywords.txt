@@ -1,0 +1,7 @@
+LED_BRIGHTNESS				KEYWORD1
+make_led_brighter			KEYWORD2
+make_led_max_bright			KEYWORD3
+make_led_dimmer				KEYWORD4
+make_led_max_dim			KEYWORD5
+set_rate					KEYWORD6
+set_brightness_percent		KEYWORD7
